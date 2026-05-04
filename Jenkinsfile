@@ -3,12 +3,9 @@ pipeline {
 
     // Define environment variables
     environment {
-        DOCKER_IMAGE_NAME = "my-blog"
-        DOCKER_IMAGE_TAG = "${BUILD_NUMBER}"
-        DOCKER_REGISTRY = "docker.io"
-        DOCKER_REGISTRY_CREDENTIALS = "docker-hub-credentials"
-        PYTHON_VERSION = "3.11"
-        PORT = "3000"
+        IMAGE_NAME = "my-blog"
+        IMAGE_TAG = "13"
+        CONTAINER_NAME = "my-blog-container"
     }
     stages {
 
