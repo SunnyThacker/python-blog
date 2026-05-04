@@ -81,16 +81,14 @@ pipeline {
                 script {
                     echo "========== Running code quality analysis =========="
                     
-                    // Run flake8 linting
                     sh '''
                         echo "Running flake8..."
-                        flake8 app.py --max-line-length=120 --count --statistics --exit-zero
+                        python3 -m flake8 app.py --max-line-length=120 --count --statistics --exit-zero
                     '''
                     
-                    // Run pylint
                     sh '''
                         echo "Running pylint..."
-                        pylint app.py --disable=all --enable=E,F --exit-zero || true
+                        python3 -m pylint app.py --disable=all --enable=E,F --exit-zero || true
                     '''
                 }
             }
