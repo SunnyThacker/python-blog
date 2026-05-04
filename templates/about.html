@@ -1,0 +1,46 @@
+{% extends "base.html" %}
+
+{% block title %}About - My Blog{% endblock %}
+
+{% block content %}
+<div class="about-page">
+    <h1>About This Blog</h1>
+    
+    <section class="about-content">
+        <h2>Welcome!</h2>
+        <p>
+            This is a simple blog platform built with Python, Flask, and Docker. 
+            It demonstrates how to create a containerized web application that can be 
+            easily deployed and scaled.
+        </p>
+        
+        <h2>Features</h2>
+        <ul>
+            <li>📝 Create and publish blog posts</li>
+            <li>📖 Read full articles</li>
+            <li>🗑️ Delete posts</li>
+            <li>🐳 Fully containerized with Docker</li>
+            <li>⚡ Fast and responsive interface</li>
+        </ul>
+        
+        <h2>Technology Stack</h2>
+        <ul>
+            <li><strong>Backend:</strong> Python with Flask</li>
+            <li><strong>Frontend:</strong> HTML, CSS, JavaScript</li>
+            <li><strong>Containerization:</strong> Docker</li>
+            <li><strong>Port:</strong> 3000</li>
+        </ul>
+        
+        <h2>Getting Started</h2>
+        <p>
+            To run this blog locally:
+        </p>
+        <ol>
+            <li>Install Docker on your system</li>
+            <li>Build the Docker image: <code>docker build -t my-blog .</code></li>
+            <li>Run the container: <code>docker run -p 3000:3000 my-blog</code></li>
+            <li>Visit http://localhost:3000 in your browser</li>
+        </ol>
+    </section>
+</div>
+{% endblock %}
