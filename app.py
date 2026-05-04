@@ -9,7 +9,7 @@ app = Flask(__name__)
 posts = [
     {
         'id': 1,
-        'title': 'Welcome to My Blog',
+        'title': 'Welcome to My Blog Sunday',
         'content': 'This is the first blog post. Welcome to our blogging platform!',
         'author': 'Admin',
         'date': '2026-05-01'
