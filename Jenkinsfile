@@ -37,7 +37,6 @@ pipeline {
 
     stages {
         stage('Checkout') {
-            description 'Checkout source code from repository'
             steps {
                 script {
                     echo "========== Checking out source code =========="
@@ -47,7 +46,6 @@ pipeline {
         }
 
         stage('Setup Environment') {
-            description 'Setup build environment'
             steps {
                 script {
                     echo "========== Setting up environment =========="
@@ -59,25 +57,23 @@ pipeline {
                     sh 'docker --version'
                     
                     // Verify Python is installed
-                    sh 'python --version || python3 --version'
+                    sh 'python3 --version'
                 }
             }
         }
 
         stage('Install Dependencies') {
-            description 'Install Python dependencies'
             steps {
                 script {
                     echo "========== Installing Python dependencies =========="
-                    sh 'pip install --upgrade pip'
-                    sh 'pip install -r requirements.txt'
-                    sh 'pip install pytest pytest-cov pylint flake8'
+                    sh 'pip3 install --upgrade pip'
+                    sh 'pip3 install -r requirements.txt'
+                    sh 'pip3 install pytest pytest-cov pylint flake8'
                 }
             }
         }
 
         stage('Code Quality Analysis') {
-            description 'Run linting and code analysis'
             steps {
                 script {
                     echo "========== Running code quality analysis =========="
@@ -98,7 +94,6 @@ pipeline {
         }
 
         stage('Unit Tests') {
-            description 'Run unit tests'
             steps {
                 script {
                     echo "========== Running unit tests =========="
@@ -133,14 +128,13 @@ if __name__ == '__main__':
     test_api_posts()
     print("All tests passed!")
 EOF
-                        python test_app.py
+                        python3 test_app.py
                     '''
                 }
             }
         }
 
         stage('Build Docker Image') {
-            description 'Build Docker image'
             steps {
                 script {
                     echo "========== Building Docker image =========="
@@ -153,7 +147,6 @@ EOF
         }
 
         stage('Scan Docker Image') {
-            description 'Scan Docker image for vulnerabilities (optional)'
             steps {
                 script {
                     echo "========== Scanning Docker image for vulnerabilities =========="
@@ -166,7 +159,6 @@ EOF
         }
 
         stage('Test Docker Image') {
-            description 'Test Docker image'
             steps {
                 script {
                     echo "========== Testing Docker image =========="
@@ -191,7 +183,6 @@ EOF
         }
 
         stage('Push to Registry') {
-            description 'Push Docker image to registry'
             when {
                 branch 'main'
             }
@@ -211,7 +202,6 @@ EOF
         }
 
         stage('Deploy') {
-            description 'Deploy application'
             when {
                 branch 'main'
             }
@@ -238,7 +228,6 @@ EOF
         }
 
         stage('Health Check') {
-            description 'Perform health checks on deployed application'
             steps {
                 script {
                     echo "========== Performing health checks =========="
